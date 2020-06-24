@@ -1,0 +1,35 @@
+{
+   "name": "super_simple_node_server",
+   "version": "1.0.0",
+   "description": "A simple base for node projects.",
+   "main": "index.js",
+   "private": false,
+   "scripts": {
+      "build": "webpack --config webpack.dev.js",
+      "build:prod": "webpack --config webpack.prod.js",
+      "start": "node server.js",
+      "start:https": "node server.js --useHttps=true"
+   },
+   "author": "Tony DiChiara",
+   "license": "MIT",
+   "dependencies": {
+      "@babel/runtime": "^7.10.2",
+      "connect-flash": "^0.1.1",
+      "express": "^4.16.4",
+      "hbs": "^4.0.1",
+      "minimist": "^1.2.0"
+   },
+   "devDependencies": {
+      "@babel/core": "^7.6.0",
+      "@babel/plugin-transform-runtime": "^7.10.1",
+      "@babel/preset-env": "^7.6.0",
+      "@types/express": "^4.16.0",
+      "babel-loader": "^8.0.6",
+      "clean-webpack-plugin": "^1.0.1",
+      "regenerator-runtime": "^0.13.3",
+      "webpack": "^4.39.3",
+      "webpack-bundle-analyzer": "^3.5.2",
+      "webpack-cli": "^3.3.8",
+      "webpack-merge": "^4.2.2"
+   }
+}

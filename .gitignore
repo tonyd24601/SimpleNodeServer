@@ -1,0 +1,10 @@
+node_modules/
+*.nogit.*
+npm-debug.log
+*.js.map
+.vscode/
+.idea
+.svn/
+trunk/
+public/build/
+.vs
