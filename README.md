@@ -150,12 +150,14 @@ then `npm run start:https` will fail. In general, the http version should be fin
 running your server locally.
 
 `dependencies`
+
 This is the list of all the packages the project needs to run. These are the things that
 get downloaded when you do `npm install`. I won't go through what each of these does here 
 because they should mostly be explained elsewhere, but if you're curious to learn more you
 can always search [npm](https://www.npmjs.com/) for them.
 
 `devDependencies`
+
 This is the list of all the packages the project needs for development, but not necessarily
 to run. For example, this may include a package that Webpack will bundle into a built file.
 Since the package is bundled, the dependency itself isn't needed to actually run the project.
