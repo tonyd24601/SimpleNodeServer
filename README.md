@@ -1,12 +1,12 @@
-#Intro
+# Intro
 This project is meant to be a general purpose starting point for a web server running 
 Node.js. You can get up and running with your project right away by following the steps
 in the quick start section, but I've also included a detailed overview of the code so that
 someone new can learn how a node server works and how the different pieces interact with each
 other. 
 
-#Quick Start
-##Pre-Requisites and instructions for running
+# Quick Start
+## Pre-Requisites and instructions for running
 Regardless of what you're trying to do, you'll need to download [Node](https://nodejs.org/en/), 
 navigate to the root
 directory of the project and run `npm install`. This only needs to be done once unless
@@ -16,60 +16,60 @@ Every time you want to run everything locally you'll need to have two terminals 
 should run `npm run start` to run the server, and one should run `npm run build` to have
 Webpack build the Javascript files.
 
-##I Just want to run Javascript in an HTML page
+## I Just want to run Javascript in an HTML page
 This project is set up so that the file `pages/index.html` will run on your localhost at 
 `http://localhost:3000`. As long as `npm run build` is running in a terminal, everything is
 setup so that changes you make to `source/js/index.js` will automatically be built and
 put in the correct place. You should be able to make changes to `source/js/index.js` and 
 refresh the page immediately to see the results.
 
-##I Just want to run server code
+## I Just want to run server code
 The entry point is `server.js`. If you make any server changes you will need to stop and
 re-run `npm run start`.
 
-#Detailed Information
+# Detailed Information
 
-##The `node_modules` folder
+## The `node_modules` folder
 When you run `npm install` node downloads all the dependencies needed for the project
 and puts them here. Since node recursively downloads all the dependencies, this folder 
 can get pretty big.
 
 ![densest objects in the universe - node_modules](https://i.imgur.com/lrgCHVu.jpg)
 
-##The `pages` folder
+## The `pages` folder
 There's nothing special about this folder either I just like to have all my HTML files in
 one place so it's easy what pages exist.
 
-###`index.html`
+### `index.html`
 I'm assuming for this project that you know HTML and Javascript so there's not too much to
 point out here. The one thing to note is the paths for `assets/style.css` and 
 `build/index.js`.
 In `server.js`, the `public` folder is set as a root directory, so files should be
 referenced relative to that folder. 
 
-##The `public` folder
+## The `public` folder
 In `server.js` we set this folder as the root folder for serving static assets. This means
 we can access files in this folder by looking for files like `assets/style.css`. I'll go
 over this more in the `server.js` section.
 
-###The `public/assets` folder
+### The `public/assets` folder
 There's nothing special about this folder, but in general I find it a good idea to keep
 all your static assets in one place. By default I've included `style.css`, which is loaded
 in `index.html`, but you can add css files, image files, or anything else you like
 here. If you had a lot of assets you should probably split this folder so that different
 file types are in different places.
 
-###The `public/build` folder
+### The `public/build` folder
 When you run `npm run build`, something called [Webpack](https://webpack.js.org/) gets run
 to bundle all your needed javascript code into one output file. I'll talk about webpack
 a bit more in another section, but the `build` folder is where the packaged output files
 are set up to get placed. 
 
-##The `source` folder
-###`js/index.js`
+## The `source` folder
+### `js/index.js`
 
-##The root folder
-###.browserslistrc
+## The root folder
+### .browserslistrc
 Webpack is configured to use [Babel](https://babeljs.io/) 
 to convert the Javascript we write into a version that
 works on older browsers. This means we can use new Javascript features in our source code
@@ -80,13 +80,13 @@ than the source version. You could change this to target back to IE11 or whateve
 you wanted to support. For more information on you options here, see
 [here](https://github.com/browserslist/browserslist)
 
-###.gitignore
+### .gitignore
 This makes it so certain files won't show up in git as ready to be added so they won't
 be added to source control. Right now this is set up to have some files/folders that I
 generally find useful to ignore, for example the built javascript files and definitely
 the `node_modules` folder. 
 
-###babel.config.js
+### babel.config.js
 As mentioned under the `.browserslistrc` file description, Webpack is currently configured
 to use [Babel](https://babeljs.io/). This file is pretty simple conceptually, but I find
 the details pretty confusing. There's documentation 
@@ -118,7 +118,7 @@ browsers. For an example of this with arrow functions see
 As mentioned above, our preset already contains a bunch of these. The one we're adding
 `transform-runtime` helps reduce duplication in the built file, which helps lower file size.
 
-###package.json
+### package.json
 This file is where everything gets defined for the node package. A lot of this is
 self-explanatory, so I'll only cover the more interesting parts here.
 
@@ -164,10 +164,10 @@ Since the package is bundled, the dependency itself isn't needed to actually run
 This mainly comes up for when you deploy the server. The computer you're deploying to would
 probably only install the dependencies and not the dev dependencies.
 
-###README.md
+### README.md
 This is the file you're reading right now! Github will display it on the project page.
 
-###webpack.common.js
+### webpack.common.js
 There are two main webpack configuration files, one for development and one for production.
 As you'd expect, they share some settings, so this is where the shared settings are stored.
 
@@ -208,7 +208,7 @@ this case we're transforming javascript files that aren't in the node_modules fo
 We don't run babel on the node_modules folder because these are from packages that we've 
 downloaded, which should already be self-contained.
 
-###webpack.dev.js
+### webpack.dev.js
 This is the config file used when running `npm run build`. The `merge(common, {. . .` 
 bit just means to merge the settings from this file with the settings in the common file.
 For information on the options for `mode` see 
@@ -221,7 +221,7 @@ for development. `watch: true` means that when you change source files, webpack 
 re-compile automatically. The re-compile should be much faster than the initial compile,
 so you should be able to view your changes in browser immediately after saving your source.
 
-###webpack.prod.js
+### webpack.prod.js
 This is the config file used when running `npm run build:prod`. See the section on the
 `webpack.dev.js` for relevant documentation for the options here. `mode: 'production'` sets
 `process.env.NODE_ENV = 'production'` and `devtool: 'source-map'` creates a small 
@@ -229,7 +229,7 @@ production-ready compiled file.
 [BundleAnalyzerPlugin](https://www.npmjs.com/package/webpack-bundle-analyzer) is a nice
 tool for showing which packages are contributing most to the size of your compiled file.
 
-###server.js
+### server.js
 This is the file that could use the most explaining, so I saved it for the end.
 
     const argv = require('minimist')(process.argv.slice(2));
